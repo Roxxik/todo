@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Overview{% endblock %}
+{% block content %}
+    <p>tasks:</p>
+    <ul>
+    {% for id, task in tasks.items() %}
+        <li><a href="/tasks/{{ id }}">{{ task["title"] }}</a></li>
+    {% endfor %}
+    </ul>
+    <p> create new task:</p>
+    <form action="/tasks/new" method="POST">
+        task title:<br>
+        <input type="text" name="title"><br>
+        <input type="submit" value="create">
+    </form>
+    <form action="/tasks/reload" method="POST">
+        <input type="submit" value="reload">
+    </form>
+    <form action="/tasks/reset" method="POST">
+        <input type="submit" value="reset">
+    </form>
+{% endblock %}
